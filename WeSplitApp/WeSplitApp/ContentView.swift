@@ -13,6 +13,9 @@ struct ContentView: View {
     @State private var count = 0
     // 用户名
     @State private var username = ""
+    // 学生列表
+    var students = ["九初彤","士傲霜","公孙冰双","王香馨","王心语"]
+    @State private var studentDefault = "王心语"
     var body: some View {
         // 创建导航栏视图
         NavigationView{
@@ -66,6 +69,25 @@ struct ContentView: View {
             // 导航栏标题样式 小 居中
              .navigationBarTitleDisplayMode(.inline)
         }
+        
+        
+        
+        // 创建导航栏视图
+        NavigationView{
+            // 创建Form 表单
+            Form{
+                // 创建下拉框视图
+                Picker("请选择学生",selection: self.$studentDefault){
+                    // 循环遍历学生列表数据
+                    ForEach(self.students,id: \.self){ student in
+                        Text(student)
+                    }
+                }
+            }
+        }
+        
+        
+        
     }
 }
 
