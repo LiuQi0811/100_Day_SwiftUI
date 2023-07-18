@@ -11,6 +11,8 @@ struct ContentView: View {
     // 计数值
     // @State允许我们绕过结构的限制 修改程序状态
     @State private var count = 0
+    // 用户名
+    @State private var username = ""
     var body: some View {
         // 创建导航栏视图
         NavigationView{
@@ -30,12 +32,23 @@ struct ContentView: View {
                          // 边距填充
                          .padding()
                  }
+                 
                  Section{
                      // 创建文本视图
                      Text("小杯")
                          // 边距填充
                          .padding()
                  }
+                 
+                 Section{
+                     /**
+                      实现双向绑定
+                      */
+                     Text("\(self.username)")
+                     // 创建文本框
+                     TextField("请输入用户",text: self.$username)
+                 }
+                 
                  Section{
                      // 创建计数按钮
                      Button("点击次数 \(count)"){
