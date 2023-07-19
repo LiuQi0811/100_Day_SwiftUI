@@ -22,6 +22,32 @@ struct ChequeSplittingView: View {
     // 货币代码
     @State private var currencyCode = "CNY"
     
+    // 总人数 计算属性
+    var totalPerPerson: Double {
+        // 人数统计
+        let peopleCount = Double(numberOfPeople + 2)
+        // 提示选择
+        let tipSelection = Double(tipPercentage)
+        // 提示值
+        let tipValue = checkAmount / 100 * tipSelection
+        // 总计
+        let grandTotal  = checkAmount + tipValue
+        // 每个人的金额
+        let amountPerPerson = grandTotal / peopleCount
+        if(self.currencyCode == "CAD"){
+           return amountPerPerson * 0.18
+        }
+        if(self.currencyCode == "AUD"){
+           return amountPerPerson * 0.20
+        }
+        if(self.currencyCode == "JPY"){
+           return amountPerPerson * 19.3
+        }
+        if(self.currencyCode == "CNY"){
+           return amountPerPerson
+        }
+        return 0
+    }
     
     
     var body: some View {
@@ -66,12 +92,18 @@ struct ChequeSplittingView: View {
                 header: {
                     Text("你想留下多少小费？\t\t\t\t \(self.tipPercentage,format: .percent)")
                 }
+                Section{
+                    Text("\(totalPerPerson)")
+                } header: {
+                    Text("小费")
+                }
             }
             // 创建导航栏标题
             .navigationTitle("支票拆分应用程序")
             // 创建导航栏标题样式 小 居中
             .navigationBarTitleDisplayMode(.inline)
         }
+     
         
     }
 }
