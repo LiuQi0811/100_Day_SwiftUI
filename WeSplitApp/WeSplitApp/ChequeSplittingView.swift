@@ -25,24 +25,54 @@ struct ChequeSplittingView: View {
     
     
     var body: some View {
-        // 创建Form表单
-        Form{
-            Section{
-              // 创建选择币种下拉框
-                Picker("请选择币种",selection: self.$currencyCode){
-                    ForEach(Array(self.currencyCodes.values),id: \.self){
-                        Text($0)
+       // 创建导航栏视图
+        NavigationView{
+            // 创建Form表单
+            Form{
+                Section{
+                  // 创建选择币种下拉框
+                    Picker("请选择币种",selection: self.$currencyCode){
+                        ForEach(Array(self.currencyCodes.values),id: \.self){
+                            Text($0)
+                        }
                     }
                 }
+                // 创建表单拆分为离散的视觉组
+                Section{
+                    // 创建文本框视图
+                    TextField("金额",value: self.$checkAmount,
+                              // 文本格式 美元符号
+                              format: .currency(code: Locale.current.currencyCode ?? self.currencyCode))
+                    // 键盘类型
+                    .keyboardType(.decimalPad)
+                    
+                    // 创建人数下拉框
+                    Picker("人数",selection: self.$numberOfPeople){
+                        ForEach(2..<20){
+                            Text("\($0) 人")
+                        }
+                    }
+                }
+                Section{
+                    // 创建小费下拉框
+                    Picker("请选择小费",selection: self.$tipPercentage){
+                        ForEach(self.tipPercentages,id: \.self){
+                            Text($0,format: .percent)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                // 视觉组 标题
+                header: {
+                    Text("你想留下多少小费？\t\t\t\t \(self.tipPercentage,format: .percent)")
+                }
             }
-            // 创建表单拆分为离散的视觉组
-            Section{
-                // 创建文本框视图
-                TextField("金额",value: self.$checkAmount,
-                          // 文本格式 美元符号
-                          format: .currency(code: self.currencyCode))
-            }
+            // 创建导航栏标题
+            .navigationTitle("支票拆分应用程序")
+            // 创建导航栏标题样式 小 居中
+            .navigationBarTitleDisplayMode(.inline)
         }
+        
     }
 }
 

@@ -11,7 +11,8 @@ import SwiftUI
 struct WeSplitAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // 支票拆分应用程序视图
+            ChequeSplittingView()
         }
     }
 }
