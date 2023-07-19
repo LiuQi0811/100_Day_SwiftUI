@@ -11,6 +11,7 @@
 		D20685B92A66595A00EBB62E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20685B82A66595A00EBB62E /* ContentView.swift */; };
 		D20685BB2A66595B00EBB62E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20685BA2A66595B00EBB62E /* Assets.xcassets */; };
 		D20685BE2A66595B00EBB62E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20685BD2A66595B00EBB62E /* Preview Assets.xcassets */; };
+		D20685C52A668E5F00EBB62E /* ChequeSplittingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20685C42A668E5F00EBB62E /* ChequeSplittingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		D20685B82A66595A00EBB62E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D20685BA2A66595B00EBB62E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20685BD2A66595B00EBB62E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D20685C42A668E5F00EBB62E /* ChequeSplittingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequeSplittingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				D20685B82A66595A00EBB62E /* ContentView.swift */,
 				D20685BA2A66595B00EBB62E /* Assets.xcassets */,
 				D20685BC2A66595B00EBB62E /* Preview Content */,
+				D20685C42A668E5F00EBB62E /* ChequeSplittingView.swift */,
 			);
 			path = WeSplitApp;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20685C52A668E5F00EBB62E /* ChequeSplittingView.swift in Sources */,
 				D20685B92A66595A00EBB62E /* ContentView.swift in Sources */,
 				D20685B72A66595A00EBB62E /* WeSplitAppApp.swift in Sources */,
 			);
