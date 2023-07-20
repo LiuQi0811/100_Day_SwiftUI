@@ -21,6 +21,8 @@ struct ChequeSplittingView: View {
     var currencyCodes:[String : String] = ["加元":"CAD","澳元":"AUD","日元":"JPY","人民币":"CNY"]
     // 货币代码
     @State private var currencyCode = "CNY"
+    // 输入焦点监听
+    @FocusState private var amountIsFocused: Bool
     
     // 总人数 计算属性
     var totalPerPerson: Double {
@@ -71,6 +73,17 @@ struct ChequeSplittingView: View {
                               format: .currency(code: Locale.current.currencyCode ?? self.currencyCode))
                     // 键盘类型
                     .keyboardType(.decimalPad)
+                    // 文本字段聚焦
+                    .focused(self.$amountIsFocused)
+                    // 创建工具栏
+                    .toolbar{
+                        // 工具栏分组
+                        ToolbarItemGroup(placement: .keyboard){
+                            Button("结束"){
+                                self.amountIsFocused = false
+                            }
+                        }
+                    }
                     
                     // 创建人数下拉框
                     Picker("人数",selection: self.$numberOfPeople){
