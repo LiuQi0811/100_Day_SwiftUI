@@ -24,6 +24,20 @@ struct ContentView: View {
             }
             // 创建安全区域
             .ignoresSafeArea()
+            
+            Spacer()
+            
+            // 创建梯度
+            LinearGradient(gradient: Gradient(stops: [Gradient.Stop(color: .purple, location: 0.45),
+                Gradient.Stop(color: .yellow, location: 0.55)]), startPoint: .top, endPoint: .bottom)
+            
+            Spacer()
+            
+            LinearGradient(gradient: Gradient(stops: [
+                .init(color: .white, location: 0.1),
+                .init(color: .pink, location: 0.8)]), startPoint: .leading, endPoint: .trailing)
+            // 创建安全区域
+            .ignoresSafeArea()
         }
     }
 }
