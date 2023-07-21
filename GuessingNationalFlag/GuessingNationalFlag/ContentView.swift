@@ -36,14 +36,19 @@ struct ContentView: View {
             LinearGradient(gradient: Gradient(stops: [
                 .init(color: .white, location: 0.1),
                 .init(color: .pink, location: 0.8)]), startPoint: .leading, endPoint: .trailing)
-            // 创建安全区域
-            .ignoresSafeArea()
             
             Spacer()
             
             // 创建径向梯度
             RadialGradient(gradient: Gradient(colors: [
                 .blue,.black]), center: .center, startRadius: 20, endRadius: 200)
+            
+            Spacer()
+            
+            // 创建角梯度
+            AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center)
+            // 创建安全区域
+            .ignoresSafeArea()
             
             
         }
