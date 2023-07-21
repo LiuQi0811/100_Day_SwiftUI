@@ -38,6 +38,14 @@ struct ContentView: View {
                 .init(color: .pink, location: 0.8)]), startPoint: .leading, endPoint: .trailing)
             // 创建安全区域
             .ignoresSafeArea()
+            
+            Spacer()
+            
+            // 创建径向梯度
+            RadialGradient(gradient: Gradient(colors: [
+                .blue,.black]), center: .center, startRadius: 20, endRadius: 200)
+            
+            
         }
     }
 }
