@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        // 创建垂直视图堆栈
+        VStack(spacing: 20) { // 设置20间距
+            ZStack{
+                VStack(spacing: 0){
+                    Color.red
+                    Color.orange
+                }
+            Text("你的内容")
+                    .foregroundColor(.secondary)
+                    .padding(50)
+                    // 设置透明背景
+                    .background(.ultraThinMaterial)
+            }
+            // 创建安全区域
+            .ignoresSafeArea()
         }
-        .padding()
     }
 }
 
