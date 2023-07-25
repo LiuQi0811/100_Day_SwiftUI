@@ -40,9 +40,7 @@ struct ButtonUIView: View {
                         .buttonStyle(.borderedProminent)
                         // 自定义 按钮颜色
                         .tint(.mint)
-                    Button{
-                        
-                    }label: {
+                    Button{}label: {
                         Text("按钮 陆")
                             .padding()
                             .foregroundColor(.white)
@@ -51,7 +49,13 @@ struct ButtonUIView: View {
                             .cornerRadius(12)
                             // 添加阴影
                             .shadow(radius: 14)
-                          
+                    }
+                    Button{}label: {
+                        // 铅笔图标按钮样式
+                        Image(systemName: "pencil")
+                    }
+                    Button{}label: {
+                        Label("编辑", systemImage: "slider.vertical.3")
                     }
                 }
             }
