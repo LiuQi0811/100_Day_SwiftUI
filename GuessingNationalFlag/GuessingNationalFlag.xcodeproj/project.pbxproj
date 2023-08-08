@@ -11,6 +11,7 @@
 		D20685D52A68FA5500EBB62E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20685D42A68FA5500EBB62E /* ContentView.swift */; };
 		D20685D72A68FA5700EBB62E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20685D62A68FA5700EBB62E /* Assets.xcassets */; };
 		D20685DA2A68FA5700EBB62E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20685D92A68FA5700EBB62E /* Preview Assets.xcassets */; };
+		D241E1F82A8205BE0021C0EA /* DisplayUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241E1F72A8205BE0021C0EA /* DisplayUIView.swift */; };
 		D24FBF3A2A6AC5D200736705 /* ButtonUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FBF392A6AC5D200736705 /* ButtonUIView.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		D20685D42A68FA5500EBB62E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D20685D62A68FA5700EBB62E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20685D92A68FA5700EBB62E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D241E1F72A8205BE0021C0EA /* DisplayUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayUIView.swift; sourceTree = "<group>"; };
 		D24FBF392A6AC5D200736705 /* ButtonUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 				D20685D62A68FA5700EBB62E /* Assets.xcassets */,
 				D20685D82A68FA5700EBB62E /* Preview Content */,
 				D24FBF392A6AC5D200736705 /* ButtonUIView.swift */,
+				D241E1F72A8205BE0021C0EA /* DisplayUIView.swift */,
 			);
 			path = GuessingNationalFlag;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D24FBF3A2A6AC5D200736705 /* ButtonUIView.swift in Sources */,
+				D241E1F82A8205BE0021C0EA /* DisplayUIView.swift in Sources */,
 				D20685D52A68FA5500EBB62E /* ContentView.swift in Sources */,
 				D20685D32A68FA5500EBB62E /* GuessingNationalFlagApp.swift in Sources */,
 			);

@@ -55,7 +55,8 @@ struct ButtonUIView: View {
                         Image(systemName: "pencil")
                     }
                     Button{}label: {
-                        Label("编辑", systemImage: "slider.vertical.3")
+                        // 调音开关按钮样式
+                        Label("调音", systemImage: "slider.vertical.3")
                     }
                 }
             }
