@@ -14,10 +14,50 @@ struct GuessingNationalFlagUIView: View {
     var correctAnswer = Int.random(in: 0...2)
     var body: some View {
         // 创建垂直堆栈视图
-        VStack{
-            Text(countries[correctAnswer])
+        VStack(spacing: 30){
+            VStack{
+                Text(countries[correctAnswer])
+            }
+            
+            ForEach(0..<3){item in
+                Button{
+                    
+                }label: {
+                    Image(usTranslateEnByImage(countries:countries)[item])
+                        // 渲染原始图像像素
+                        .renderingMode(.original)
+                }
+            }
         }
     }
+}
+
+/**
+  中英文翻译 用于国旗展示
+ */
+func usTranslateEnByImage(countries: Array<String>) ->Array<String>{
+    var result: Array<String> = []
+    for item in countries{
+        if(item==UsTranslateEn.Estonia.rawValue){
+            result.append("Estonia")
+        }
+        if(item==UsTranslateEn.France.rawValue){
+            result.append("France")
+        }
+        if(item==UsTranslateEn.Germany.rawValue){
+            result.append("Germany")
+        }
+    }
+    return result
+}
+
+/**
+    国旗枚举
+ */
+enum UsTranslateEn: String{
+    case Estonia = "爱沙尼亚"
+    case France = "法国"
+    case Germany = "德国"
 }
 
 struct GuessingNationalFlagUIView_Previews: PreviewProvider {
