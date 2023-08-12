@@ -20,16 +20,18 @@ struct GuessingNationalFlagUIView: View {
         // 创建水平堆栈视图
         ZStack{
             
-            // 创建背景颜色
-            Color.blue
+            // 创建背景颜色 径向梯度
+            RadialGradient(stops: [.init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
+                                   .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3)], center: .top, startRadius: 200, endRadius: 400)
                 // 创建安全域
                 .ignoresSafeArea()
             
             // 创建垂直堆栈视图
-            VStack(spacing: 30){
+            VStack(spacing: 15){
                 VStack{
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
+                        .font(.largeTitle.weight(.bold))
                    
                 }
                 // 循环遍历旗帜
@@ -41,9 +43,20 @@ struct GuessingNationalFlagUIView: View {
                         Image(usTranslateEnByImage(countries:countries)[item])
                             // 渲染原始图像像素
                             .renderingMode(.original)
+                            // 创建胶囊图形
+                            .clipShape(Capsule())
+                            // 创建阴影效果
+                            .shadow(radius: 5)
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
+            // 创建 垂直填充
+            .padding(.vertical)
+            // 创建 透明背景
+            .background(.regularMaterial)
+            // 创建矩形圆角图形
+            .clipShape(RoundedRectangle(cornerRadius: 20))
         }
         // 创建提示弹框
         .alert(self.scoreTitle,isPresented: self.$showingScore){
