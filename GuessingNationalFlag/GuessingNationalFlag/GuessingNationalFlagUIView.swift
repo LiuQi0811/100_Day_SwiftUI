@@ -16,53 +16,60 @@ struct GuessingNationalFlagUIView: View {
     @State private var showingScore = false
     // 得分成绩标题
     @State private var scoreTitle = ""
+    // 分数
+    @State private var score = 0
     var body: some View {
         // 创建水平堆栈视图
         ZStack{
             
-            // 创建背景颜色 径向梯度
-            RadialGradient(stops: [.init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
-                                   .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3)], center: .top, startRadius: 200, endRadius: 400)
+            // 创建背景颜色 线性梯度
+            LinearGradient(colors: [.blue,.yellow,.pink,.purple], startPoint: .top, endPoint: .bottom)
                 // 创建安全域
                 .ignoresSafeArea()
             
             // 创建垂直堆栈视图
             VStack(spacing: 15){
+                Text("当前分数 \(self.score)")
+                    .font(.title)
+                    .fontWeight(.bold)
                 VStack{
                     Text(countries[correctAnswer])
-                        .foregroundColor(.white)
+                        .foregroundColor(.gray)
                         .font(.largeTitle.weight(.bold))
-                   
-                }
-                // 循环遍历旗帜
-                ForEach(0..<3){item in
-                    // 创建旗帜按钮
-                    Button{
-                        self.answerCheck(item)
-                    }label: {
-                        Image(usTranslateEnByImage(countries:countries)[item])
-                            // 渲染原始图像像素
-                            .renderingMode(.original)
-                            // 创建胶囊图形
-                            .clipShape(Capsule())
-                            // 创建阴影效果
-                            .shadow(radius: 5)
+                    // 循环遍历旗帜
+                    ForEach(0..<3){item in
+                        // 创建旗帜按钮
+                        Button{
+                            self.answerCheck(item)
+                        }label: {
+                            Image(usTranslateEnByImage(countries:countries)[item])
+                                // 渲染原始图像像素
+                                .renderingMode(.original)
+                                // 创建胶囊图形
+                                .clipShape(Capsule())
+                                // 创建阴影效果
+                                .shadow(radius: 5)
+                        }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                // 创建 垂直填充
+                .padding(.vertical)
+                // 创建 透明背景
+                .background(.regularMaterial)
+                // 创建矩形圆角图形
+                .clipShape(RoundedRectangle(cornerRadius: 20))
             }
-            .frame(maxWidth: .infinity)
-            // 创建 垂直填充
-            .padding(.vertical)
-            // 创建 透明背景
-            .background(.regularMaterial)
-            // 创建矩形圆角图形
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding()
+          
         }
         // 创建提示弹框
         .alert(self.scoreTitle,isPresented: self.$showingScore){
             
         }message: {
-            Text("你的成绩是：")
+            Text("你的成绩是：\(self.score)")
+                .foregroundColor(.white)
+                .font(.title.bold())
         }
        
     }
@@ -83,11 +90,14 @@ struct GuessingNationalFlagUIView: View {
         // 答案对比
         if(number == self.correctAnswer){
             self.scoreTitle = "回答正确"
+            self.score += 10
         }else{
             self.scoreTitle = "回答错误"
+            self.score -= 10
         }
         // 得分成绩展示
         self.showingScore = true
+        self.reshuffle()
     }
 }
 
