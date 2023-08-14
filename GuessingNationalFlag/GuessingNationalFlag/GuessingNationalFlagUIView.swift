@@ -28,10 +28,20 @@ struct GuessingNationalFlagUIView: View {
                 .ignoresSafeArea()
             
             // 创建垂直堆栈视图
-            VStack(spacing: 15){
-                Text("当前分数 \(self.score)")
-                    .font(.title)
-                    .fontWeight(.bold)
+            VStack(spacing: 25){
+                if(self.score < 0){
+                    Text("游戏结束")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .foregroundColor(.gray)
+                }else{
+                    Text("当前分数 \(self.score)")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .foregroundColor(.gray)
+                }
                 VStack{
                     Text(countries[correctAnswer])
                         .foregroundColor(.gray)
