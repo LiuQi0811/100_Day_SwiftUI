@@ -17,7 +17,9 @@ struct GuessingNationalFlagUIView: View {
     // 得分成绩标题
     @State private var scoreTitle = ""
     // 分数
-    @State private var score = 0
+    @State private var score = -1
+    // 禁用状态
+    @State private var disabledEnable = false
     var body: some View {
         // 创建水平堆栈视图
         ZStack{
@@ -60,6 +62,8 @@ struct GuessingNationalFlagUIView: View {
                                 // 创建阴影效果
                                 .shadow(radius: 5)
                         }
+                        // 按钮禁用
+                        .disabled(self.disabledEnable)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -68,7 +72,25 @@ struct GuessingNationalFlagUIView: View {
                 // 创建 透明背景
                 .background(.regularMaterial)
                 // 创建矩形圆角图形
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                
+                
+                if(self.score < 0){
+                    Button("开始游戏"){
+                        // 开始游戏 分数归 0
+                        self.score = 0
+                        // 隐藏开始游戏按钮
+                    }
+                    .font(.title.bold())
+                    .padding(.vertical,20)
+                    .padding(.horizontal,80)
+                    .background(.regularMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                    .shadow(radius: 20)
+                }
+                
+                
+                
             }
             .padding()
           
@@ -85,6 +107,13 @@ struct GuessingNationalFlagUIView: View {
     }
     
     /**
+      获取禁用状态
+     */
+    func getDisabledEnable(_ status: Bool){
+        self.disabledEnable = status
+    }
+    
+    /**
      重置/重新洗牌
      */
     func reshuffle(){
@@ -97,6 +126,10 @@ struct GuessingNationalFlagUIView: View {
      回答答案验证
      */
     func answerCheck(_ number: Int){
+        if(self.correctAnswer == 0){
+            // 开启按钮禁用
+            self.getDisabledEnable(true)
+        }
         // 答案对比
         if(number == self.correctAnswer){
             self.scoreTitle = "回答正确"
